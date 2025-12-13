@@ -85,7 +85,7 @@ FPGA board projects are in the `boards/` directory:
 - **MicroPhase XC7A35T (Artix-7)**: `z8086.xpr` (Vivado 2021.1). Drives onboard LED. For LCD, see photo linked below for connections. Press K1 button to start.
 - **DE10-Nano (Cyclone V)**: `z8086.qpf` (Quartus Prime). Drives onboard LED. For LCD, see photo linked below for connections. Press KEY0 to start.
 
-See LCD demo screenshots: DE10-Nano, [Tang Console 60K](tang_lcd.jpg), [MicroPhase Artix7](doc/microphase_lcd.jpg), [DE10-Nano](doc/de10nano_lcd.jpg).
+See LCD demo screenshots: DE10-Nano, [Tang Console 60K](doc/tang_lcd.jpg), [MicroPhase Artix7](doc/microphase_lcd.jpg), [DE10-Nano](doc/de10nano_lcd.jpg).
 
 ## Example SoC Integration
 

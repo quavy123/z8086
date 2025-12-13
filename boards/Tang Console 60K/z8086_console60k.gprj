@@ -1,0 +1,16 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5AT-60B" pn="GW5AT-LV60PG484AC1/I0">gw5at60b-002</Device>
+    <FileList>
+        <File path="../../src/z8086/alu.sv" type="file.verilog" enable="1"/>
+        <File path="../../src/z8086/z8086.sv" type="file.verilog" enable="1"/>
+        <File path="../../src/soc/spram.sv" type="file.verilog" enable="1"/>
+        <File path="../../src/soc/z8086_top.sv" type="file.verilog" enable="1"/>
+        <File path="console60k.cst" type="file.cst" enable="1"/>
+        <File path="z8086.sdc" type="file.sdc" enable="1"/>
+        <File path="z8086_console60k.rao" type="file.gao" enable="0"/>
+    </FileList>
+</Project>

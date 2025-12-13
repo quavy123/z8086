@@ -1,6 +1,6 @@
 # z8086: FPGA 8086 Core Powered by Original Microcode
 
-**z8086** is a clean-room, FPGA-targeted implementation of the Intel 8086/8088 microprocessor. It executes the original 8086 microcode and provides a simplified memory/IO interface for FPGA integration.
+**z8086** is a FPGA-targeted implementation of the Intel 8086/8088 microprocessor. It executes the original 8086 microcode and provides a simplified memory/IO interface for FPGA integration.
 
 ## Overview
 

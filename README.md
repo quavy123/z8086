@@ -46,10 +46,12 @@ The core implementation is located in `src/`:
 
 To run simulations, build the Verilator testbench and use the provided Python runners in `tests/`. Prerequisites: Verilator 4.0+, C++ compiler, make, Python 3.
 
-**Build simulator:**
+**Build simulator and prepare test data:**
 ```bash
 cd 04.z8086/tests
 make -s build
+wget https://github.com/nand2mario/z8086/releases/download/v0.1/8088.tar.gz
+tar xzf 8088.tar.gz
 ```
 
 **Test an instruction:**

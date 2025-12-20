@@ -168,7 +168,7 @@ Refer to these examples as starting points for your own programs, and consult `z
 
 ## HDMI SoC demo
 
-This is a larger demo: a complete 8086-compatible SoC featuring HDMI video output, UART communication, and embedded firmware. It currently targets the Tang Console 60K. The Gowin project file is located at `boards/Tang Console 60K.soc_hdmi`, with source files in `src/soc_hdmi`, and firmware in `programs/soc_hdmi.c`.
+This is a larger demo: a complete 8086-compatible SoC featuring HDMI video output, UART communication, and C firmware (as opposed to the assembly-only firmware used in previous examples). It currently targets the Tang Console 60K. The Gowin project file is located at `boards/Tang Console 60K.soc_hdmi`, with source files in `src/soc_hdmi`, and firmware in `programs/soc_hdmi.c`.
 
 ```
 ┌───────────────────────────────────────────────────────┐

